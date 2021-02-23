@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Calculator.Tests
@@ -10,66 +11,53 @@ namespace Calculator.Tests
     public class ScenarioTime : Configurator
     {
         [Test]
-        public void ConvertFromHoursToMinutes()
+        public void ConvertFromMinutesToSeconds()
         {
-            // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 5 hours in 300 minutes
-            GetCalculatorType("Time Converter");
-            string input = session.FindElementByAccessibilityId("Units1").Text;
-            string output = session.FindElementByAccessibilityId("Units2").Text;
-            if (!input.Contains("Hours"))
-            {
-                session.FindElementByAccessibilityId("Units1").Click();
-                session.FindElementByName("Hours").Click();
-            }
-            if (!output.Contains("Minutes"))
-            {
-                session.FindElementByAccessibilityId("Units2").Click();
-                session.FindElementByName("Minutes").Click();
-            }
-            session.FindElementByAccessibilityId("num5Button").Click();
-            Assert.AreEqual("300 Minutes", GetResults("Converts into", "Value2"));
+            // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 8 minutes in 480 seconds
+            ConfigureTime("Minutes", "Seconds", "Eight");
+            Assert.AreEqual("480 Seconds", GetResults("Converts into", "Value2"));
         }
 
         [Test]
         public void ConvertFromWeeksToDays()
         {
             // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 5 weeks to 35 days
-            GetCalculatorType("Time Converter");
-            string input = session.FindElementByAccessibilityId("Units1").Text;
-            string output = session.FindElementByAccessibilityId("Units2").Text;
-            if (!input.Contains("Weeks"))
-            {
-                session.FindElementByAccessibilityId("Units1").Click();
-                session.FindElementByName("Weeks").Click();
-            }
-            if (!output.Contains("Days"))
-            {
-                session.FindElementByAccessibilityId("Units2").Click();
-                session.FindElementByName("Days").Click();
-            }
-            session.FindElementByAccessibilityId("num5Button").Click();
+            ConfigureTime("Weeks", "Days", "Five");
             Assert.AreEqual("35 Days", GetResults("Converts into", "Value2"));
         }
 
         [Test]
-        public void ConvertFromWeeksToHours()
+        public void ConvertFromHoursToMinutes()
         {
-            // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 2 weeks to 8,736 hours
-            GetCalculatorType("Time Converter");
-            string input = session.FindElementByAccessibilityId("Units1").Text;
-            string output = session.FindElementByAccessibilityId("Units2").Text;
-            if (!input.Contains("Weeks"))
+            // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 2 hours to 120 minutes
+            ConfigureTime("Hours", "Minutes", "Two");
+            Assert.AreEqual("120 Minutes", GetResults("Converts into", "Value2"));
+        }
+
+        private void ConfigureTime(string input, string output, string button)
+        {
+            try
             {
-                session.FindElementByAccessibilityId("Units1").Click();
-                session.FindElementByName("Weeks").Click();
+                GetCalculatorType("Time Converter");
+                string from = session.FindElementByAccessibilityId("Units1").Text;
+                string to = session.FindElementByAccessibilityId("Units2").Text;
+                if (!from.Contains(input))
+                {
+                    session.FindElementByAccessibilityId("Units1").Click();
+                    session.FindElementByName(input).Click();
+                }
+                if (!to.Contains(output))
+                {
+                    session.FindElementByAccessibilityId("Units2").Click();
+                    session.FindElementByName(output).Click();
+                }
+                session.FindElementByName(button).Click();
+                Thread.Sleep(TimeSpan.FromSeconds(0.5));
             }
-            if (!output.Contains("Hours"))
+            catch(InvalidOperationException ex)
             {
-                session.FindElementByAccessibilityId("Units2").Click();
-                session.FindElementByName("Hours").Click();
+                throw new InvalidOperationException($"All of the parameters are of the type element name. {ex}");
             }
-            session.FindElementByAccessibilityId("num2Button").Click();
-            Assert.AreEqual("8,736 Hours", GetResults("Converts into", "Value2"));
         }
     }
 }

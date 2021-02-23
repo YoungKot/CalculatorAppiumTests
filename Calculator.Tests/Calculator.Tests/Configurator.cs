@@ -21,9 +21,9 @@ namespace Calculator.Tests
                 result = session.FindElementByAccessibilityId(resultName);
                 return result.Text.Replace(text, string.Empty).Trim();
             }
-            catch(Exception ex)
+            catch(InvalidOperationException ex)
             {
-                throw new InvalidOperationException("resultName must be of the type AccessibilityId.");
+                throw new InvalidOperationException($"resultName must be of the type AccessibilityId. {ex}");
             }
         }
 
@@ -42,9 +42,9 @@ namespace Calculator.Tests
                     Thread.Sleep(TimeSpan.FromSeconds(1));
                 }
             }
-            catch(Exception ex)
+            catch(InvalidOperationException ex)
             {
-                throw new InvalidOperationException("The type must be of the type element name.");
+                throw new InvalidOperationException($"The type must be of the type element name. {ex}");
             }
 
         }
