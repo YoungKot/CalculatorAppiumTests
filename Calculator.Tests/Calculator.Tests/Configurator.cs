@@ -36,10 +36,12 @@ namespace Calculator.Tests
 
                 if (!type.Contains(header))
                 {
-                    session.FindElementByAccessibilityId("TogglePaneButton").Click();
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
-                    session.FindElementByName(type).Click();
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                    var paneButton = session.FindElementByAccessibilityId("TogglePaneButton");
+                    wait.Until(pred => paneButton.Displayed);
+                    paneButton.Click();
+                    var calcType = session.FindElementByName(type);
+                    wait.Until(pred => calcType.Displayed);
+                    calcType.Click();
                 }
             }
             catch(InvalidOperationException ex)
@@ -47,6 +49,14 @@ namespace Calculator.Tests
                 throw new InvalidOperationException($"The type must be of the type element name. {ex}");
             }
 
+        }
+
+        // Wait until element is displayed and then click on it
+        public static void WaitAndClick(string AccessibilityId)
+        {
+            var element = session.FindElementByAccessibilityId(AccessibilityId);
+            wait.Until(pred => element.Displayed);
+            element.Click();
         }
     }
 }

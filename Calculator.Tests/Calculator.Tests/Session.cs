@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace Calculator.Tests
@@ -11,6 +12,7 @@ namespace Calculator.Tests
         private static string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
         private static string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
         protected static WindowsDriver<WindowsElement> session;
+        protected static WebDriverWait wait;
 
         [OneTimeSetUp]
         public static void Setup()
@@ -24,9 +26,9 @@ namespace Calculator.Tests
                 desiredCapabilities.AddAdditionalCapability("deviceName", "WindowsPC");
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), desiredCapabilities);
 
-                // Set implicit timeout to 1.5 seconds to make element search to retry every 500 ms for at most three times
-                session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
-                
+                // Set explicit timeout to 10 seconds to make element search to retry every 250 ms
+                wait = new WebDriverWait(session, TimeSpan.FromSeconds(10));
+
             }
         }
 

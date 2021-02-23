@@ -43,16 +43,15 @@ namespace Calculator.Tests
                 string to = session.FindElementByAccessibilityId("Units2").Text;
                 if (!from.Contains(input))
                 {
-                    session.FindElementByAccessibilityId("Units1").Click();
+                    WaitAndClick("Units1");
                     session.FindElementByName(input).Click();
                 }
                 if (!to.Contains(output))
                 {
-                    session.FindElementByAccessibilityId("Units2").Click();
+                    WaitAndClick("Units2");
                     session.FindElementByName(output).Click();
                 }
                 session.FindElementByName(button).Click();
-                Thread.Sleep(TimeSpan.FromSeconds(0.5));
             }
             catch(InvalidOperationException ex)
             {
