@@ -12,16 +12,16 @@ namespace Calculator.Tests
     {
         private static string header;
         private static WindowsElement result;
-
+        
         // Concate the text
-        public string GetResults(string text, string resultName)
+        public static string GetResults(string text, string resultName)
         {
             result = session.FindElementByAccessibilityId(resultName);
             return result.Text.Replace(text, string.Empty).Trim();
         }
 
         // Check the header of the calculator, switch it if no match between header and type
-        public void GetCalculatorType(string type)
+        public static void GetCalculatorType(string type)
         {
             header = session.FindElementByAccessibilityId("Header").Text;
 

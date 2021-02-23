@@ -2,22 +2,18 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests
 {
     public class Session
     {
         // test must be directed at Appium
-        private readonly string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
-        private readonly string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
+        private static string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
+        private static string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
         protected static WindowsDriver<WindowsElement> session;
 
-        [SetUp]
-        public void Setup()
+        [OneTimeSetUp]
+        public static void Setup()
         {
             // Launch Calculator application if it is not yet launched
             if (session == null)
@@ -34,8 +30,8 @@ namespace Calculator.Tests
             }
         }
 
-        [TearDown]
-        public void TearDown()
+        [OneTimeTearDown]
+        public static void TearDown()
         {
             // Close the application and delete the session
             if (session != null)
