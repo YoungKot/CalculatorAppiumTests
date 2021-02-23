@@ -23,7 +23,7 @@ namespace Calculator.Tests
             }
             catch(Exception ex)
             {
-                throw new InvalidOperationException("resultName must be of the type AccessibilityId");
+                throw new InvalidOperationException("resultName must be of the type AccessibilityId.");
             }
         }
 
@@ -44,7 +44,7 @@ namespace Calculator.Tests
             }
             catch(Exception ex)
             {
-                throw new InvalidOperationException("type must be of the type element name");
+                throw new InvalidOperationException("The type must be of the type element name.");
             }
 
         }

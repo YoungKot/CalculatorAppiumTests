@@ -14,10 +14,12 @@ namespace Calculator.Tests
             string currencyConverted = session.FindElementByAccessibilityId("Units2").Text;
             if (!currencyToBeConverted.Contains("United States"))
             {
+                session.FindElementByAccessibilityId("Units1").Click();
                 session.FindElementByName("United States Dollar").Click();
             }
             if (!currencyConverted.Contains("Europe Euro"))
             {
+                session.FindElementByAccessibilityId("Units2").Click();
                 session.FindElementByName("Europe Euro").Click();
             }
             session.FindElementByAccessibilityId("num4Button").Click();

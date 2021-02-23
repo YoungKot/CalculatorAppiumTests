@@ -65,6 +65,7 @@
     <Compile Include="ScenarioDateCalculation.cs" />
     <Compile Include="ScenarioScientific.cs" />
     <Compile Include="ScenarioStandard.cs" />
+    <Compile Include="ScenarioTime.cs" />
     <Compile Include="Session.cs" />
   </ItemGroup>
   <ItemGroup>
