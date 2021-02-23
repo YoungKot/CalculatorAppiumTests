@@ -16,21 +16,35 @@ namespace Calculator.Tests
         // Concate the text
         public static string GetResults(string text, string resultName)
         {
-            result = session.FindElementByAccessibilityId(resultName);
-            return result.Text.Replace(text, string.Empty).Trim();
+            try
+            {
+                result = session.FindElementByAccessibilityId(resultName);
+                return result.Text.Replace(text, string.Empty).Trim();
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
         }
 
         // Check the header of the calculator, switch it if no match between header and type
         public static void GetCalculatorType(string type)
         {
-            header = session.FindElementByAccessibilityId("Header").Text;
-
-            if (!type.Contains(header))
+            try
             {
-                session.FindElementByAccessibilityId("TogglePaneButton").Click();
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                session.FindElementByName(type).Click();
-                Thread.Sleep(TimeSpan.FromSeconds(1));
+                header = session.FindElementByAccessibilityId("Header").Text;
+
+                if (!type.Contains(header))
+                {
+                    session.FindElementByAccessibilityId("TogglePaneButton").Click();
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                    session.FindElementByName(type).Click();
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                }
+            }
+            catch(Exception ex)
+            {
+                throw;
             }
 
         }
