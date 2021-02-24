@@ -39,6 +39,7 @@ namespace Calculator.Tests
             try
             {
                 GetCalculatorType("Time Converter");
+                wait.Until(pred => session.FindElementByAccessibilityId("Units1").Displayed);
                 string from = session.FindElementByAccessibilityId("Units1").Text;
                 string to = session.FindElementByAccessibilityId("Units2").Text;
                 if (!from.Contains(input))

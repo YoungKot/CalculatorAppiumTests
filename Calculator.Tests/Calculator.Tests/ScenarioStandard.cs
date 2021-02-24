@@ -13,6 +13,7 @@ namespace Calculator.Tests
         {
             // Find the buttons by their names and click them in sequence to perform 3 + 8 = 11
             GetCalculatorType("Standard Calculator");
+            wait.Until(pred => session.FindElementByName("Three").Displayed);
             session.FindElementByName("Three").Click();
             session.FindElementByName("Plus").Click();
             session.FindElementByName("Eight").Click();
@@ -25,6 +26,7 @@ namespace Calculator.Tests
         {
             // Find the buttons by their accessibility ids and click them in sequence to perform 8 - 7 = 1
             GetCalculatorType("Standard Calculator");
+            wait.Until(pred => session.FindElementByName("Seven").Displayed);
             session.FindElementByAccessibilityId("num8Button").Click();
             session.FindElementByAccessibilityId("minusButton").Click();
             session.FindElementByAccessibilityId("num7Button").Click();
@@ -37,6 +39,7 @@ namespace Calculator.Tests
         {
             // Find the buttons by their names using XPath and click them in sequence to perform 55 / 11 = 5
             GetCalculatorType("Standard Calculator");
+            wait.Until(pred => session.FindElementByName("Five").Displayed);
             session.FindElementByXPath("//Button[@Name='Five']").Click();
             session.FindElementByXPath("//Button[@Name='Five']").Click();
             session.FindElementByXPath("//Button[@Name='Divide by']").Click();
@@ -51,6 +54,7 @@ namespace Calculator.Tests
         {
             // Find the buttons by their names and click them in sequence to perform 3 * 8 = 24
             GetCalculatorType("Standard Calculator");
+            wait.Until(pred => session.FindElementByName("Three").Displayed);
             session.FindElementByName("Three").Click();
             session.FindElementByName("Multiply by").Click();
             session.FindElementByName("Eight").Click();

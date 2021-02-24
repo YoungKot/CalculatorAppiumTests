@@ -10,6 +10,7 @@ namespace Calculator.Tests
         {
             // Find the buttons by their accessibility ids, check for the currency values present and get the value to be converted from - 4
             GetCalculatorType("Currency Converter");
+            wait.Until(pred => session.FindElementByAccessibilityId("Units1").Displayed);
             string currencyToBeConverted = session.FindElementByAccessibilityId("Units1").Text;
             string currencyConverted = session.FindElementByAccessibilityId("Units2").Text;
             if (!currencyToBeConverted.Contains("United States"))
