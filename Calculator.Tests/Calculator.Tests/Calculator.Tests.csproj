@@ -60,17 +60,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurator.cs" />
-    <Compile Include="ScenarioCurrency.cs" />
-    <Compile Include="ScenarioDateCalculation.cs" />
-    <Compile Include="ScenarioScientific.cs" />
-    <Compile Include="ScenarioStandard.cs" />
-    <Compile Include="ScenarioTime.cs" />
-    <Compile Include="Session.cs" />
+    <Compile Include="Configuration\Configurator.cs" />
+    <Compile Include="Pages\ScenarioCurrencyPage.cs" />
+    <Compile Include="Pages\ScenarioDateCalculationPage.cs" />
+    <Compile Include="Pages\ScenarioScientificPage.cs" />
+    <Compile Include="Pages\ScenarioStandardPage.cs" />
+    <Compile Include="Pages\ScenarioTimePage.cs" />
+    <Compile Include="Scenarios\ScenarioCurrency.cs" />
+    <Compile Include="Scenarios\ScenarioDateCalculation.cs" />
+    <Compile Include="Scenarios\ScenarioScientific.cs" />
+    <Compile Include="Scenarios\ScenarioStandard.cs" />
+    <Compile Include="Scenarios\ScenarioTime.cs" />
+    <Compile Include="Configuration\Session.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

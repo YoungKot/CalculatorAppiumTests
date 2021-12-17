@@ -11,8 +11,8 @@ namespace Calculator.Tests
         // test must be directed at Appium
         private static string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
         private static string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
-        protected static WindowsDriver<WindowsElement> session;
-        protected static WebDriverWait wait;
+        public static WindowsDriver<WindowsElement> session;
+        public static WebDriverWait wait;
 
         [OneTimeSetUp]
         public static void Setup()
