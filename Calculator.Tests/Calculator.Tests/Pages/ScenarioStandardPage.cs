@@ -24,7 +24,7 @@ namespace Calculator.Tests.Pages
         {
             _driver = driver;
             _wait = wait;
-            _config = new Configurator(driver, wait);
+            _config = new Configurator(_driver, _wait);
             _config.GetCalculatorType(calcType);
         }
 
