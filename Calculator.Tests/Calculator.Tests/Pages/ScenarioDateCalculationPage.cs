@@ -34,10 +34,11 @@ namespace Calculator.Tests.Pages
         public WindowsElement ToDateBtn => _driver.FindElementByName("To");
 
         public WindowsElement Sixth => _driver.FindElementByName("6");
+        
         public void DifferenceBetweenDates()
         {
             // Find the buttons by their names, check the difference between dates 3rd and 6th results in 3 days
-            _wait.Until(pred => FromDateBtn.Displayed);
+            _wait.Until(pred => FromDateBtn.Enabled);
             FromDateBtn.Click();
             Third.Click();
             ToDateBtn.Click();
