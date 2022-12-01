@@ -30,6 +30,7 @@ namespace Calculator.Tests.Pages
         public WindowsElement BtnPower => _driver.FindElementByAccessibilityId("powerButton");
 
         public WindowsElement BtnMod => _driver.FindElementByAccessibilityId("modButton");
+
         public void Exponent()
         {
             // Find the buttons by their names and accessibility ids and click them in sequence to perform 2 in the power of 3 = 8
