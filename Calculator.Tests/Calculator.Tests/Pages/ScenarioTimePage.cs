@@ -1,11 +1,6 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests.Pages
 {
@@ -15,16 +10,13 @@ namespace Calculator.Tests.Pages
 
         private readonly WebDriverWait _wait;
 
-        private Configurator _config;
+        private readonly Configurator _config;
 
-        private string calcType = "Time Converter";
-
-        public ScenarioTimePage(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
+        public ScenarioTimePage(WindowsDriver<WindowsElement> driver, WebDriverWait wait, Configurator config)
         {
             _driver = driver;
             _wait = wait;
-            _config = new Configurator(_driver, _wait);
-            _config.GetCalculatorType(calcType);
+            _config = config;
         }
 
         public WindowsElement Unit1 => _driver.FindElementByAccessibilityId("Units1");
@@ -35,21 +27,18 @@ namespace Calculator.Tests.Pages
         {
             // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 8 minutes in 480 seconds
             ConfigureTime("Minutes", "Seconds", "Eight");
-            Assert.AreEqual("480 Seconds", _config.GetResults("Converts into", "Value2"));
         }
 
         public void ConvertFromWeeksToDays()
         {
             // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 5 weeks to 35 days
             ConfigureTime("Weeks", "Days", "Five");
-            Assert.AreEqual("35 Days", _config.GetResults("Converts into", "Value2"));
         }
 
         public void ConvertFromHoursToMinutes()
         {
             // Find the labels by their accessibility ids and names, check for the time values present and get the value to be converted from 2 hours to 120 minutes
             ConfigureTime("Hours", "Minutes", "Two");
-            Assert.AreEqual("120 Minutes", _config.GetResults("Converts into", "Value2"));
         }
 
         private void ConfigureTime(string input, string output, string button)

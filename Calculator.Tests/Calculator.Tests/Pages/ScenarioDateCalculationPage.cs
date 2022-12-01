@@ -1,11 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests.Pages
 {
@@ -15,16 +9,10 @@ namespace Calculator.Tests.Pages
 
         private readonly WebDriverWait _wait;
 
-        private Configurator _config;
-
-        private string calcType = "Date Calculation Calculator";
-
         public ScenarioDateCalculationPage(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
         {
             _driver = driver;
             _wait = wait;
-            _config = new Configurator(_driver, _wait);
-            _config.GetCalculatorType(calcType);
         }
 
         public WindowsElement FromDateBtn => _driver.FindElementByName("From");
@@ -43,7 +31,6 @@ namespace Calculator.Tests.Pages
             Third.Click();
             ToDateBtn.Click();
             Sixth.Click();
-            Assert.AreEqual("3", _config.GetResults("days", "DateDiffAllUnitsResultLabel"));
         }
     }
 }

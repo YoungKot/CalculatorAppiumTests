@@ -1,12 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests.Pages
 {
@@ -16,16 +9,12 @@ namespace Calculator.Tests.Pages
 
         private readonly WebDriverWait _wait;
 
-        private Configurator _config;
-
-        private string calcType = "Standard Calculator";
+        private readonly Configurator _config;
 
         public ScenarioStandardPage(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
         {
             _driver = driver;
             _wait = wait;
-            _config = new Configurator(_driver, _wait);
-            _config.GetCalculatorType(calcType);
         }
 
         public WindowsElement BtnEight => _driver.FindElementByName("Eight");
@@ -56,7 +45,6 @@ namespace Calculator.Tests.Pages
             BtnPlus.Click();
             BtnEight.Click();
             BtnEquals.Click();
-            Assert.AreEqual("11", _config.GetResults("Display is", "CalculatorResults"));
         }
 
         public void Subtraction()
@@ -67,7 +55,6 @@ namespace Calculator.Tests.Pages
             BtnMinus.Click();
             BtnSeven.Click();
             BtnEquals.Click();
-            Assert.AreEqual("1", _config.GetResults("Display is", "CalculatorResults"));
         }
 
         public void Division()
@@ -80,7 +67,6 @@ namespace Calculator.Tests.Pages
             BtnOne.Click();
             BtnOne.Click();
             BtnEquals.Click();
-            Assert.AreEqual("5", _config.GetResults("Display is", "CalculatorResults"));
         }
 
         public void Multiplication()
@@ -91,7 +77,6 @@ namespace Calculator.Tests.Pages
             BtnMultiply.Click();
             BtnEight.Click();
             BtnEquals.Click();
-            Assert.AreEqual("24", _config.GetResults("Display is", "CalculatorResults"));
         }
     }
 }

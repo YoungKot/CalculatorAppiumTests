@@ -1,11 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests.Pages
 {
@@ -15,16 +9,12 @@ namespace Calculator.Tests.Pages
 
         private readonly WebDriverWait _wait;
 
-        private Configurator _config;
-
-        private string calcType = "Scientific Calculator";
+        private readonly Configurator _config;
 
         public ScenarioScientificPage(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
         {
             _driver = driver;
             _wait = wait;
-            _config = new Configurator(_driver, _wait);
-            _config.GetCalculatorType(calcType);
         }
 
         public WindowsElement BtnOne => _driver.FindElementByName("One");
@@ -48,7 +38,6 @@ namespace Calculator.Tests.Pages
             BtnPower.Click();
             BtnThree.Click();
             BtnEquals.Click();
-            Assert.AreEqual("8", _config.GetResults("Display is", "CalculatorResults"));
         }
 
         public void Mod()
@@ -60,7 +49,6 @@ namespace Calculator.Tests.Pages
             BtnMod.Click();
             BtnThree.Click();
             BtnEquals.Click();
-            Assert.AreEqual("1", _config.GetResults("Display is", "CalculatorResults"));
         }
     }
 }

@@ -1,11 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calculator.Tests.Pages
 {
@@ -15,16 +9,13 @@ namespace Calculator.Tests.Pages
 
         private readonly WebDriverWait _wait;
 
-        private Configurator _config;
+        private readonly Configurator _config;
 
-        private string calcType = "Currency Converter";
-
-        public ScenarioCurrencyPage(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
+        public ScenarioCurrencyPage(WindowsDriver<WindowsElement> driver, WebDriverWait wait, Configurator config)
         {
             _driver = driver;
             _wait = wait;
-            _config =  new Configurator(_driver, _wait);
-            _config.GetCalculatorType(calcType);
+            _config = config;
         }
 
         public WindowsElement Unit1 => _driver.FindElementByAccessibilityId("Units1");
@@ -53,7 +44,6 @@ namespace Calculator.Tests.Pages
                 EuroCurrency.Click();
             }
             ConvertButton.Click();
-            Assert.AreEqual("4 United States Dollar", _config.GetResults("Convert from", "Value1"));
         }
     }
 }

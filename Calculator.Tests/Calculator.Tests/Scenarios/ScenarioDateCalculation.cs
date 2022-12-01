@@ -1,6 +1,5 @@
 ﻿using Calculator.Tests.Pages;
 using NUnit.Framework;
-using System;
 
 namespace Calculator.Tests
 {
@@ -9,9 +8,17 @@ namespace Calculator.Tests
     {
         private ScenarioDateCalculationPage scenarioDateCalcPage;
 
+        private Configurator _config;
+
+        private string calcType = "Date Calculation Calculator";
+
         [OneTimeSetUp]
         public void SetUp()
         {
+            _config = new Configurator(session, wait);
+
+            _config.GetCalculatorType(calcType);
+
             scenarioDateCalcPage = new ScenarioDateCalculationPage(session, wait);
         }
 
@@ -19,6 +26,7 @@ namespace Calculator.Tests
         public void DifferenceBetweenDatesTest()
         {
             scenarioDateCalcPage.DifferenceBetweenDates();
+            Assert.AreEqual("3", _config.GetResults("days", "DateDiffAllUnitsResultLabel"));
         }
     }
 }
