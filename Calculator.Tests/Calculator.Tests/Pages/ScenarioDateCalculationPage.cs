@@ -15,21 +15,21 @@ namespace Calculator.Tests.Pages
             _wait = wait;
         }
 
-        public WindowsElement FromDateBtn => _driver.FindElementByName("From");
+        private WindowsElement FromDateButton => _driver.FindElementByName("From");
 
-        public WindowsElement Third => _driver.FindElementByName("3");
+        private WindowsElement Third => _driver.FindElementByName("3");
 
-        public WindowsElement ToDateBtn => _driver.FindElementByName("To");
+        private WindowsElement ToDateButton => _driver.FindElementByName("To");
 
-        public WindowsElement Sixth => _driver.FindElementByName("6");
+        private WindowsElement Sixth => _driver.FindElementByName("6");
         
         public void DifferenceBetweenDates()
         {
             // Find the buttons by their names, check the difference between dates 3rd and 6th results in 3 days
-            _wait.Until(pred => FromDateBtn.Enabled);
-            FromDateBtn.Click();
+            _wait.Until(pred => FromDateButton.Enabled);
+            FromDateButton.Click();
             Third.Click();
-            ToDateBtn.Click();
+            ToDateButton.Click();
             Sixth.Click();
         }
     }

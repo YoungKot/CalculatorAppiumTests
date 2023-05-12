@@ -10,7 +10,7 @@ namespace Calculator.Tests
 
         private Configurator _config;
 
-        private string calcType = "Time Converter";
+        private readonly string calcType = "Time Converter";
 
         [OneTimeSetUp]
         public void SetUp()

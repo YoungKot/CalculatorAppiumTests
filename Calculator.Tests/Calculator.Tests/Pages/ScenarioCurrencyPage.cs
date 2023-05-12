@@ -18,17 +18,17 @@ namespace Calculator.Tests.Pages
             _config = config;
         }
 
-        public WindowsElement Unit1 => _driver.FindElementByAccessibilityId("Units1");
+        private WindowsElement Unit1 => _driver.FindElementByAccessibilityId("Units1");
 
-        public WindowsElement CurrencyToBeConverted => _driver.FindElementByAccessibilityId("Units1");
+        private WindowsElement CurrencyToBeConverted => _driver.FindElementByAccessibilityId("Units1");
 
-        public WindowsElement CurrencyConverted => _driver.FindElementByAccessibilityId("Units2");
+        private WindowsElement CurrencyConverted => _driver.FindElementByAccessibilityId("Units2");
 
-        public WindowsElement DollarCurrency => _driver.FindElementByName("United States Dollar");
+        private WindowsElement DollarCurrency => _driver.FindElementByName("United States Dollar");
 
-        public WindowsElement EuroCurrency => _driver.FindElementByName("Europe Euro");
+        private WindowsElement EuroCurrency => _driver.FindElementByName("Europe Euro");
 
-        public WindowsElement ConvertButton => _driver.FindElementByAccessibilityId("num4Button");
+        private WindowsElement ConvertButton => _driver.FindElementByAccessibilityId("num4Button");
 
         public void ConvertFromCurrency()
         {

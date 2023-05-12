@@ -12,16 +12,19 @@ namespace Calculator.Tests
     public class Configurator
     {
         private WindowsElement result;
+
         private readonly WindowsDriver<WindowsElement> _driver;
+
         private readonly WebDriverWait _wait;
+
         public Configurator(WindowsDriver<WindowsElement> driver, WebDriverWait wait)
         {
             _driver = driver;
             _wait = wait;
         }
 
-        public WindowsElement Header => _driver.FindElementByAccessibilityId("Header");
-        public WindowsElement paneButton => _driver.FindElementByAccessibilityId("TogglePaneButton");
+        private WindowsElement Header => _driver.FindElementByAccessibilityId("Header");
+        private WindowsElement PaneButton => _driver.FindElementByAccessibilityId("TogglePaneButton");
 
         // Concate the text
         public string GetResults(string text, string resultName)
@@ -44,18 +47,17 @@ namespace Calculator.Tests
             {
                 if (!type.Contains(Header.Text))
                 {
-                    _wait.Until(pred => paneButton.Displayed);
-                    paneButton.Click();
-                    var calcType = _driver.FindElementByName(type);
-                    _wait.Until(pred => calcType.Displayed);
-                    calcType.Click();
+                    _wait.Until(pred => PaneButton.Displayed);
+                    PaneButton.Click();
+                    var calculatorType = _driver.FindElementByName(type);
+                    _wait.Until(pred => calculatorType.Displayed);
+                    calculatorType.Click();
                 }
             }
             catch(InvalidOperationException ex)
             {
                 throw new InvalidOperationException($"The type must be of the type element name. {ex}");
             }
-
         }
 
         // Wait until element is displayed and then click on it

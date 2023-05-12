@@ -9,9 +9,12 @@ namespace Calculator.Tests
     public class Session
     {
         // test must be directed at Appium
-        private static string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
-        private static string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
+        private static readonly string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/wd/hub";
+
+        private static readonly string CalculatorAppId = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
+
         public static WindowsDriver<WindowsElement> session;
+
         public static WebDriverWait wait;
 
         [OneTimeSetUp]
@@ -42,6 +45,5 @@ namespace Calculator.Tests
                 session = null;
             }
         }
-
     }
 }

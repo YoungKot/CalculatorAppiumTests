@@ -10,7 +10,7 @@ namespace Calculator.Tests
 
         private Configurator _config;
 
-        private string calcType = "Standard Calculator";
+        private readonly string calcType = "Standard Calculator";    
 
         [OneTimeSetUp]
         public void SetUp()
