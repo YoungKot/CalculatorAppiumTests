@@ -10,7 +10,7 @@ namespace Calculator.Tests
 
         private Configurator _config;
 
-        private reaonly string calcType = "Date Calculation Calculator";
+        private readonly string calcType = "Date Calculation Calculator";
 
         [OneTimeSetUp]
         public void SetUp()
